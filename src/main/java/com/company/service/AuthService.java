@@ -88,15 +88,16 @@ public class AuthService {
 
         Thread thread = new Thread(() -> {
             try {
-                sendEmail(entity, "/api/v1/auth/verification/", EmailType.VERIFICATION);
+                sendEmail(entity, "api/v1/auth/verification/", EmailType.VERIFICATION);
             } catch (AppBadRequestException e) {
-                profileRepository.updateDeletedDate(LocalDateTime.now(), entity.getId());
-                throw new AppBadRequestException("Mail not send!");
+                profileRepository.updateDeletedDate(LocalDateTime.now(), entity.getEmail());
+//                throw new AppBadRequestException("Mail not send!");
+                e.printStackTrace();
             }
         });
         thread.start();
 
-        return "Confirm your email address.\nCheck your email!";
+        return "Confirm your email address.\nYou'll receive by this email -> unidevs.info@gmail.com\nCheck your email!";
     }
 
     public String verification(String email) {

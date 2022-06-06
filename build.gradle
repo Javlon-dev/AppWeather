@@ -33,10 +33,16 @@ dependencies {
     implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
 
 //   swagger
-    implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+//    implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+    implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
+
 
 //   email
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '2.2.6.RELEASE'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-mail'
+//    implementation group: 'com.sun.mail', name: 'jakarta.mail', version: '1.6.7'
+//    implementation group: 'com.sun.mail', name: 'javax.mail', version: '1.6.2'
+
+
 
 }
 

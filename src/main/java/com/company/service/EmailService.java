@@ -18,7 +18,6 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Slf4j
 @Service
@@ -39,7 +38,11 @@ public class EmailService {
             helper.setTo(toEmail);
             helper.setText(content, true);
 
+            log.info("Mail preparation for sending to email={}", toEmail);
+
             javaMailSender.send(message);
+
+            log.info("Preparation for saving email={}", toEmail);
 
             saveEmail(toEmail, type);
 

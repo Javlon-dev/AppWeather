@@ -21,8 +21,8 @@ public interface ProfileRepository extends JpaRepository<ProfileEntity, String> 
 
     @Transactional
     @Modifying
-    @Query("update ProfileEntity set deletedDate = :date where id = :id and deletedDate is null ")
-    int updateDeletedDate(@Param("date") LocalDateTime date, @Param("id") String id);
+    @Query("update ProfileEntity set deletedDate = :date where email = :email and deletedDate is null ")
+    int updateDeletedDate(@Param("date") LocalDateTime date, @Param("email") String email);
 
     @Transactional
     @Modifying

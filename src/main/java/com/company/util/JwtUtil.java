@@ -51,6 +51,7 @@ public class JwtUtil {
             return new JwtDTO(email);
 
         } catch (JwtException e) {
+            log.warn("Jwt Invalid jwt={}", jwt);
             throw new AppBadRequestException("JWT invalid!");
         }
     }

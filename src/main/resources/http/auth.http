@@ -1,0 +1,19 @@
+### Login
+POST http://localhost:4040/api/v1/auth/login
+Content-Type: application/json
+
+{
+  "email": "javlonpa1n@gmail.com",
+  "password": "qwerty123"
+}
+
+### Registration
+POST http://localhost:4040/api/v1/auth/registration
+Content-Type: application/json
+
+{
+  "name": "Java",
+  "surname": "1.8",
+  "email": "javlonpa1n@gmail.com",
+  "password": "qwerty123"
+}
