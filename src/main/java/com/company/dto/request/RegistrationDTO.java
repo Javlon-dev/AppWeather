@@ -29,4 +29,7 @@ public class RegistrationDTO {
     @Size(min = 8, message = "Password length must be between 8 to more than")
     private String password;
 
+//    @NotBlank(message = "City required")
+//    private String city;
+
 }

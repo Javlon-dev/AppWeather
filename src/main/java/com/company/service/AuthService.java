@@ -35,6 +35,9 @@ public class AuthService {
     @Value("${server.domain.name}")
     private String domainName;
 
+    @Value("${spring.mail.username}")
+    private String email;
+
 
     public ProfileResponseDTO login(LoginDTO dto) {
         return toDTO(authorization(dto));
@@ -91,13 +94,13 @@ public class AuthService {
                 sendEmail(entity, "api/v1/auth/verification/", EmailType.VERIFICATION);
             } catch (AppBadRequestException e) {
                 profileRepository.updateDeletedDate(LocalDateTime.now(), entity.getEmail());
-//                throw new AppBadRequestException("Mail not send!");
-                e.printStackTrace();
+                throw new AppBadRequestException("Mail not send!");
+//                e.printStackTrace();
             }
         });
         thread.start();
 
-        return "Confirm your email address.\nYou'll receive by this email -> unidevs.info@gmail.com\nCheck your email!";
+        return "Confirm your email address.\nYou'll receive by this email -> " + email + "\nCheck your email!";
     }
 
     public String verification(String email) {

@@ -17,7 +17,7 @@ public class JwtUtil {
     }
 
     public static String encodeEmail(String email) {
-        return encode(email, 5);
+        return encode(email, 3);
     }
 
     private static String encode(String email, long minute) {
@@ -28,8 +28,8 @@ public class JwtUtil {
 
         if (minute == 60) {
             jwtBuilder.setExpiration(new Date(System.currentTimeMillis() + (minute * 60 * 1000 * 24 * 7))); // for a week
-        } else if (minute == 5) {
-            jwtBuilder.setExpiration(new Date(System.currentTimeMillis() + (minute * 60 * 1000))); // for 5 minutes
+        } else if (minute == 3) {
+            jwtBuilder.setExpiration(new Date(System.currentTimeMillis() + (minute * 60 * 1000))); // for 3 minutes
         }
 
         jwtBuilder.setIssuer("Weather Production");
