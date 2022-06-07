@@ -32,9 +32,6 @@ public class AuthService {
 
     private final PasswordEncoder passwordEncoder;
 
-    @Value("${server.domain.name}")
-    private String domainName;
-
     @Value("${spring.mail.username}")
     private String email;
 
@@ -91,11 +88,11 @@ public class AuthService {
 
         Thread thread = new Thread(() -> {
             try {
-                sendEmail(entity, "api/v1/auth/verification/", EmailType.VERIFICATION);
+                emailService.preparationSend(entity, "api/v1/auth/verification/", EmailType.VERIFICATION);
             } catch (AppBadRequestException e) {
                 profileRepository.updateDeletedDate(LocalDateTime.now(), entity.getEmail());
-                throw new AppBadRequestException("Mail not send!");
-//                e.printStackTrace();
+//                throw new AppBadRequestException("Mail not send!");
+                e.printStackTrace();
             }
         });
         thread.start();
@@ -110,16 +107,6 @@ public class AuthService {
         }
         log.warn("Unsuccessfully verified email={}", email);
         throw new AppNotAcceptableException("Unsuccessfully verified!");
-    }
-
-    public void sendEmail(ProfileEntity entity, String domainPath, EmailType type) {
-        StringBuilder builder = new StringBuilder();
-        builder.append("<h2>Hellomaleykum ").append(entity.getName()).append(" ").append(entity.getSurname()).append("!</h2>");
-        builder.append("<br><p><b>To verify your registration click to next link -> ");
-        builder.append("<a href=\"" + domainName + domainPath);
-        builder.append(JwtUtil.encodeEmail(entity.getEmail()));
-        builder.append("\">This Link</a></b></p></br>");
-        emailService.send(entity.getEmail(), "Active Your Email", builder.toString(), type);
     }
 
     public ProfileResponseDTO toDTO(ProfileEntity entity) {

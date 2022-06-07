@@ -1,13 +1,15 @@
 package com.company.dto;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class JwtDTO {
+
+    private String profileId;
 
     private String email;
 

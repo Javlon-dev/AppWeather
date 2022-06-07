@@ -2,12 +2,15 @@ package com.company.service;
 
 import com.company.dto.EmailDTO;
 import com.company.entity.EmailEntity;
+import com.company.entity.ProfileEntity;
 import com.company.enums.EmailType;
 import com.company.exception.AppBadRequestException;
 import com.company.exception.ItemNotFoundException;
 import com.company.repository.EmailRepository;
+import com.company.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.*;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -28,8 +31,21 @@ public class EmailService {
 
     private final EmailRepository emailRepository;
 
+    @Value("${server.domain.name}")
+    private String domainName;
 
-    public void send(String toEmail, String title, String content, EmailType type) {
+    public void preparationSend(ProfileEntity entity, String domainPath, EmailType type) {
+        StringBuilder builder = new StringBuilder();
+        builder.append("<h2>Hellomaleykum ").append(entity.getName()).append(" ").append(entity.getSurname()).append("!</h2>");
+        builder.append("<br><p><b>To verify your registration click to next link -> ");
+        builder.append("<a href=\"" + domainName + domainPath);
+        builder.append(JwtUtil.encodeEmail(entity.getEmail(), entity.getId()));
+        builder.append("\">This Link</a></b></p></br>");
+
+        sendEmail(entity.getEmail(), "Active Your Email", builder.toString(), type);
+    }
+
+    public void sendEmail(String toEmail, String title, String content, EmailType type) {
         try {
             MimeMessage message = javaMailSender.createMimeMessage();
             message.setSubject(title);

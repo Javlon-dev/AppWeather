@@ -26,22 +26,22 @@ public class AuthController {
 
     @ApiOperation(value = "Login", notes = "Method used for login and getting token")
     @PostMapping("/login")
-    public ResponseEntity<ProfileResponseDTO> authProfile(@RequestBody @Valid LoginDTO dto) {
-        log.info("Authorization {}", dto);
+    public ResponseEntity<ProfileResponseDTO> login(@RequestBody @Valid LoginDTO dto) {
+        log.info("Authorization dto={}", dto);
         return ResponseEntity.ok(authService.login(dto));
     }
 
     @ApiOperation(value = "Registration", notes = "Method used for registration")
     @PostMapping("/registration")
     public ResponseEntity<String> registration(@RequestBody @Valid RegistrationDTO dto) {
-        log.info("Registration {}", dto);
+        log.info("Registration dto={}", dto);
         return ResponseEntity.ok(authService.registration(dto));
     }
 
-    @ApiOperation(value = "Email Verification", notes = "Method used for email verifier")
+    @ApiOperation(value = "Verification", notes = "Method used for email verifier")
     @GetMapping("/verification/{token}")
     public ResponseEntity<String> verification(@PathVariable("token") String token) {
-        log.info("Verification {}", token);
+        log.info("Verification token={}", token);
         return ResponseEntity.ok(authService.verification(JwtUtil.decode(token).getEmail()));
     }
 

@@ -20,7 +20,5 @@ public class ProfileResponseDTO extends BaseDTO {
 
     private String email;
 
-    private ProfileStatus status;
-
     private String token;
 }
