@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
 @ToString
 public class ProfilePasswordDTO {
 
-    @NotBlank(message = "Old Password required")
+    @NotBlank(message = "OldPassword required")
     private String oldPassword;
 
     @NotBlank(message = "Password required")

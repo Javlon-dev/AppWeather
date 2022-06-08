@@ -72,7 +72,7 @@ public class AuthService {
             entity = optional.get();
 
             if (!entity.getStatus().equals(ProfileStatus.INACTIVE)) {
-                log.warn("Unique {}", dto.getEmail());
+                log.warn("Unique Email {}", dto.getEmail());
                 throw new ItemAlreadyExistsException("This Email already used!");
             }
 

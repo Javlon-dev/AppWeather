@@ -8,6 +8,8 @@ import com.company.dto.response.ProfileResponseDTO;
 import com.company.entity.ProfileEntity;
 import com.company.enums.profile.ProfileRole;
 import com.company.enums.profile.ProfileStatus;
+import com.company.exception.AppForbiddenException;
+import com.company.exception.ItemAlreadyExistsException;
 import com.company.mapper.ProfileInfoMapper;
 import com.company.repository.ProfileRepository;
 import com.company.repository.custom.ProfileCustomRepository;
@@ -22,6 +24,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -55,21 +58,36 @@ public class ProfileService {
 
     public String updateEmail(ProfileEmailDTO dto) {
         ProfileEntity entity = EntityDetails.getProfile();
+
+        Optional<ProfileEntity> byEmail = profileRepository.findByEmailAndDeletedDateIsNull(dto.getEmail());
+
+        if (byEmail.isPresent()) {
+            log.warn("Unique Email {}", dto.getEmail());
+            throw new ItemAlreadyExistsException("This Email already used!");
+
+        }
+
         entity.setEmail(dto.getEmail());
 
         return emailService.show("api/v1/profile/", entity);
     }
 
     public Boolean putNewEmail(JwtDTO dto) {
-        return profileRepository.updateEmail(dto.getEmail(), dto.getProfileId()) > 0;
+        ProfileEntity currentEntity = EntityDetails.getProfile();
+        ProfileEntity ownerEntity = getById(dto.getProfileId());
+        if (currentEntity.getEmail().equals(ownerEntity.getEmail())) {
+            return profileRepository.updateEmail(dto.getEmail(), dto.getProfileId()) > 0;
+        }
+        log.warn("No Access {}", dto);
+        throw new AppForbiddenException("No Access!");
     }
 
     public Boolean updatePassword(ProfilePasswordDTO dto) {
         ProfileEntity entity = EntityDetails.getProfile();
 
         if (!passwordEncoder.matches(dto.getOldPassword(), entity.getPassword())) {
-            log.warn("Invalid Password {}", dto);
-            throw new BadCredentialsException("Invalid Password!");
+            log.warn("Invalid Old Password {}", dto);
+            throw new BadCredentialsException("Invalid Old Password!");
         }
 
         return profileRepository.updatePassword(passwordEncoder.encode(dto.getPassword()), entity.getEmail(), entity.getId()) > 0;
@@ -138,11 +156,11 @@ public class ProfileService {
 
         switch (entity.getRole()) {
             case ROLE_ADMIN: {
-                profileRepository.updateRole(ProfileRole.ROLE_ADMIN, profileId);
+                profileRepository.updateRole(ProfileRole.ROLE_CLIENT, profileId);
                 break;
             }
             case ROLE_CLIENT: {
-                profileRepository.updateRole(ProfileRole.ROLE_CLIENT, profileId);
+                profileRepository.updateRole(ProfileRole.ROLE_ADMIN, profileId);
                 break;
             }
         }

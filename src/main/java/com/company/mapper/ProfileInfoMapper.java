@@ -5,7 +5,6 @@ import com.company.enums.profile.ProfileRole;
 import com.company.enums.profile.ProfileStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
@@ -13,8 +12,9 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 public class ProfileInfoMapper extends BaseDTO {
+
+    private String id;
 
     private String name;
 
@@ -27,5 +27,9 @@ public class ProfileInfoMapper extends BaseDTO {
     private ProfileRole role;
 
     private LocalDateTime deletedDate;
+
+    private LocalDateTime createdDate;
+
+    private LocalDateTime updatedDate;
 
 }

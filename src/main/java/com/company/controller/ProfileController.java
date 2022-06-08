@@ -18,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Slf4j
@@ -33,7 +34,7 @@ public class ProfileController {
      * CLIENT
      */
 
-    @ApiOperation(value = "Profile Info", notes = "Method used to show profile information",
+    @ApiOperation(value = "Profile Info", notes = "Method used to show profile information (for CLIENT)",
             authorizations = @Authorization(value = "JWT token"))
     @PreAuthorize("hasRole('CLIENT')")
     @GetMapping("")
@@ -42,25 +43,16 @@ public class ProfileController {
         return ResponseEntity.ok(profileService.getProfileInfo());
     }
 
-    @ApiOperation(value = "Update Profile Bio", notes = "Method used for update profile bio",
+    @ApiOperation(value = "Update Profile Bio", notes = "Method used for update profile bio (for CLIENT)",
             authorizations = @Authorization(value = "JWT token"))
     @PreAuthorize("hasRole('CLIENT')")
     @PutMapping("/bio")
-    public ResponseEntity<ProfileResponseDTO> updateProfile(@RequestBody ProfileBioDTO dto) {
+    public ResponseEntity<ProfileResponseDTO> updateProfile(@RequestBody @Valid ProfileBioDTO dto) {
         log.info("Update Profile Bio {}", dto);
         return ResponseEntity.ok(profileService.updateProfile(dto));
     }
 
-    @ApiOperation(value = "Update Profile Email", notes = "Method used for update profile email",
-            authorizations = @Authorization(value = "JWT token"))
-    @PreAuthorize("hasRole('CLIENT')")
-    @PutMapping("/email")
-    public ResponseEntity<String> updateEmail(@RequestBody ProfileEmailDTO dto) {
-        log.info("Update Profile Email {}", dto);
-        return ResponseEntity.ok(profileService.updateEmail(dto));
-    }
-
-    @ApiOperation(value = "Delete Profile", notes = "Method used for delete profile",
+    @ApiOperation(value = "Delete Profile", notes = "Method used for delete profile (for CLIENT)",
             authorizations = @Authorization(value = "JWT token"))
     @PreAuthorize("hasRole('CLIENT')")
     @DeleteMapping("/delete")
@@ -73,16 +65,25 @@ public class ProfileController {
      * ANY
      */
 
-    @ApiOperation(value = "Update Profile Password", notes = "Method used for update profile password",
+    @ApiOperation(value = "Update Profile Password", notes = "Method used for update profile password (for ANY)",
             authorizations = @Authorization(value = "JWT token"))
     @PreAuthorize("hasAnyRole('CLIENT','ADMIN')")
     @PutMapping("/password")
-    public ResponseEntity<Boolean> updatePassword(@RequestBody ProfilePasswordDTO dto) {
+    public ResponseEntity<Boolean> updatePassword(@RequestBody @Valid ProfilePasswordDTO dto) {
         log.info("Update Profile Password {}", dto);
         return ResponseEntity.ok(profileService.updatePassword(dto));
     }
 
-    @ApiOperation(value = "Put Profile Email", notes = "Method used for update profile email",
+    @ApiOperation(value = "Update Profile Email", notes = "Method used for update profile email (for ANY)",
+            authorizations = @Authorization(value = "JWT token"))
+    @PreAuthorize("hasAnyRole('CLIENT','ADMIN')")
+    @PutMapping("/email")
+    public ResponseEntity<String> updateEmail(@RequestBody @Valid ProfileEmailDTO dto) {
+        log.info("Update Profile Email {}", dto);
+        return ResponseEntity.ok(profileService.updateEmail(dto));
+    }
+
+    @ApiOperation(value = "Put Profile Email", notes = "Method used for update profile email (for ANY)",
             authorizations = @Authorization(value = "JWT token"))
     @PreAuthorize("hasAnyRole('CLIENT','ADMIN')")
     @GetMapping("/{token}")
