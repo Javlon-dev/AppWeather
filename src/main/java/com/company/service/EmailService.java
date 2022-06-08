@@ -34,10 +34,15 @@ public class EmailService {
     @Value("${server.domain.name}")
     private String domainName;
 
+    public String show(String domainPath, ProfileEntity entity) {
+        return "Confirm Your Email Address\n" + domainName + domainPath +
+                JwtUtil.encodeEmail(entity.getEmail(), entity.getId());
+    }
+
     public void preparationSend(ProfileEntity entity, String domainPath, EmailType type) {
         StringBuilder builder = new StringBuilder();
         builder.append("<h2>Hellomaleykum ").append(entity.getName()).append(" ").append(entity.getSurname()).append("!</h2>");
-        builder.append("<br><p><b>To verify your registration click to next link -> ");
+        builder.append("<br><p><pb>To verify your registration click to next link -> ");
         builder.append("<a href=\"" + domainName + domainPath);
         builder.append(JwtUtil.encodeEmail(entity.getEmail(), entity.getId()));
         builder.append("\">This Link</a></b></p></br>");

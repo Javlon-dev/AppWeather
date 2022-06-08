@@ -1,5 +1,6 @@
 package com.company.service;
 
+import com.company.dto.JwtDTO;
 import com.company.dto.request.LoginDTO;
 import com.company.dto.request.RegistrationDTO;
 import com.company.dto.response.ProfileResponseDTO;
@@ -28,12 +29,14 @@ public class AuthService {
 
     private final ProfileRepository profileRepository;
 
+    private final ProfileService profileService;
+
     private final EmailService emailService;
 
     private final PasswordEncoder passwordEncoder;
 
     @Value("${spring.mail.username}")
-    private String email;
+    private String sendEmail;
 
 
     public ProfileResponseDTO login(LoginDTO dto) {
@@ -41,7 +44,7 @@ public class AuthService {
     }
 
     public ProfileEntity authorization(LoginDTO dto) {
-        ProfileEntity entity = getByEmail(dto.getEmail());
+        ProfileEntity entity = profileService.getByEmail(dto.getEmail());
 
         if (entity.getStatus().equals(ProfileStatus.BLOCK)) {
             log.warn("Profile Blocked email={}", dto.getEmail());
@@ -86,6 +89,10 @@ public class AuthService {
             profileRepository.save(entity);
         }
 
+        /**
+         * Email send
+         */
+/*
         Thread thread = new Thread(() -> {
             try {
                 emailService.preparationSend(entity, "api/v1/auth/verification/", EmailType.VERIFICATION);
@@ -97,15 +104,17 @@ public class AuthService {
         });
         thread.start();
 
-        return "Confirm your email address.\nYou'll receive by this email -> " + email + "\nCheck your email!";
+        return "Confirm your email address.\nYou'll receive by this email -> " + sendEmail + "\nCheck your email!";*/
+
+        return emailService.show("api/v1/auth/verification/", entity);
     }
 
-    public String verification(String email) {
-        if (profileRepository.updateStatus(ProfileStatus.ACTIVE, email) > 0) {
-            log.info("Successfully verified email={}", email);
+    public String verification(JwtDTO dto) {
+        if (profileRepository.updateStatus(ProfileStatus.ACTIVE, dto.getEmail(), dto.getProfileId()) > 0) {
+            log.info("Successfully verified email={}", dto.getEmail());
             return "Successfully verified";
         }
-        log.warn("Unsuccessfully verified email={}", email);
+        log.warn("Unsuccessfully verified email={}", dto.getEmail());
         throw new AppNotAcceptableException("Unsuccessfully verified!");
     }
 
@@ -120,12 +129,4 @@ public class AuthService {
         return dto;
     }
 
-    public ProfileEntity getByEmail(String email) {
-        return profileRepository
-                .findByEmailAndDeletedDateIsNull(email)
-                .orElseThrow(() -> {
-                    log.warn("Profile Not Found email={}", email);
-                    return new UsernameNotFoundException("Profile Not Found!");
-                });
-    }
 }

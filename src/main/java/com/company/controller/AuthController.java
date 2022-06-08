@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -19,6 +20,7 @@ import javax.validation.Valid;
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
 @Api(tags = "Authorization")
+//@PreAuthorize("permitAll()")
 public class AuthController {
 
     private final AuthService authService;
@@ -42,7 +44,7 @@ public class AuthController {
     @GetMapping("/verification/{token}")
     public ResponseEntity<String> verification(@PathVariable("token") String token) {
         log.info("Verification token={}", token);
-        return ResponseEntity.ok(authService.verification(JwtUtil.decode(token).getEmail()));
+        return ResponseEntity.ok(authService.verification(JwtUtil.decode(token)));
     }
 
 }

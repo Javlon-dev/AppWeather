@@ -9,9 +9,9 @@ import lombok.*;
 @AllArgsConstructor
 public class JwtDTO {
 
-    private String profileId;
-
     private String email;
+
+    private String profileId;
 
     public JwtDTO(String email) {
         this.email = email;

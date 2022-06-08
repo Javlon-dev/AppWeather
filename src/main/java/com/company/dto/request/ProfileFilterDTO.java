@@ -1,4 +1,4 @@
-package com.company.dto;
+package com.company.dto.request;
 
 import com.company.enums.profile.ProfileRole;
 import com.company.enums.profile.ProfileStatus;
@@ -6,12 +6,10 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.time.LocalDateTime;
-
 @Getter
 @Setter
 @ToString
-public class ProfileDTO extends BaseDTO {
+public class ProfileFilterDTO {
 
     private String name;
 
@@ -23,6 +21,8 @@ public class ProfileDTO extends BaseDTO {
 
     private ProfileRole role;
 
-    private LocalDateTime deletedDate;
+    private Boolean deletedDate = true;
+
+    private Boolean createdDate = true;
 
 }
