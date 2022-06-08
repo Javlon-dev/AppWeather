@@ -1,0 +1,7 @@
+### Get Current Weather
+GET http://localhost:4040/api/v1/weather/Samarkand
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXZsb25wYTFuQGdtYWlsLmNvbSIsImlhdCI6MTY1NDY5Nzg1OSwiZXhwIjoxNjU1MzAyNjU5LCJpc3MiOiJXZWF0aGVyIFByb2R1Y3Rpb24ifQ.4-VXdtx1RchyYYX1TMrzqaXtSvnUNewd3yrIacuQ6eU
+
+### Get Current Weather
+GET http://localhost:4040/api/v1/weather/Tashkent
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmR1cmFraG1hbm92amJAaWNsb3VkLmNvbSIsImlhdCI6MTY1NDY5Nzk1MCwiZXhwIjoxNjU1MzAyNzUwLCJpc3MiOiJXZWF0aGVyIFByb2R1Y3Rpb24ifQ.vDimNdjMjI0QMKq_t_VqavIe8W1FiATEuiz-CFJy7Mg
