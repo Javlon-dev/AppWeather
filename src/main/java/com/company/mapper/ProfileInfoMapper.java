@@ -3,6 +3,7 @@ package com.company.mapper;
 import com.company.dto.BaseDTO;
 import com.company.enums.profile.ProfileRole;
 import com.company.enums.profile.ProfileStatus;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,7 +13,8 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @AllArgsConstructor
-public class ProfileInfoMapper extends BaseDTO {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class ProfileInfoMapper {
 
     private String id;
 
@@ -26,10 +28,10 @@ public class ProfileInfoMapper extends BaseDTO {
 
     private ProfileRole role;
 
-    private LocalDateTime deletedDate;
-
     private LocalDateTime createdDate;
 
     private LocalDateTime updatedDate;
+
+    private LocalDateTime deletedDate;
 
 }

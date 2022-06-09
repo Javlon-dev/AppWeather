@@ -9,10 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
@@ -31,8 +28,8 @@ public class WeatherController {
     @ApiOperation(value = "Current Weather Info", notes = "Method used to show current weather information (for ANY)",
             authorizations = @Authorization(value = "JWT token"))
     @PreAuthorize("hasAnyRole('CLIENT','ADMIN')")
-    @GetMapping("/{location}")
-    public ResponseEntity<WeatherDTO> getCurrentWeather(@PathVariable("location") String location) {
+    @GetMapping("")
+    public ResponseEntity<WeatherDTO> getCurrentWeather(@RequestParam(value = "location") String location) {
         log.info("Current Weather Info location={}", location);
         return ResponseEntity.ok(weatherService.getCurrentWeather(location));
     }

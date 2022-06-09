@@ -1,0 +1,116 @@
+### Profile Info - CLIENT
+GET http://137.184.80.70:4040/api/v1/profile
+#->CLIENT
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXZsb25wYTFuQGdtYWlsLmNvbSIsImlhdCI6MTY1NDc2NDg5OSwiZXhwIjoxNjU1MzY5Njk5LCJpc3MiOiJXZWF0aGVyIFByb2R1Y3Rpb24ifQ.4kakTgY014MWeIm6CnS56Dncm_He7TquWWdYElZFPvU
+#->ADMIN
+#Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmR1cmFraG1hbm92amJAaWNsb3VkLmNvbSIsImlhdCI6MTY1NDc2NDkzOCwiZXhwIjoxNjU1MzY5NzM4LCJpc3MiOiJXZWF0aGVyIFByb2R1Y3Rpb24ifQ.SBcpgOiTZwjrkUKv1FhiFMVS4d05YqJmFnV9YGuOgrs
+
+### Update Profile Bio - CLIENT
+PUT http://137.184.80.70:4040/api/v1/profile/bio
+Content-Type: application/json
+#->CLIENT
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXZsb25wYTFuQGdtYWlsLmNvbSIsImlhdCI6MTY1NDc2NDg5OSwiZXhwIjoxNjU1MzY5Njk5LCJpc3MiOiJXZWF0aGVyIFByb2R1Y3Rpb24ifQ.4kakTgY014MWeIm6CnS56Dncm_He7TquWWdYElZFPvU
+#->ADMIN
+#Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmR1cmFraG1hbm92amJAaWNsb3VkLmNvbSIsImlhdCI6MTY1NDc2NDkzOCwiZXhwIjoxNjU1MzY5NzM4LCJpc3MiOiJXZWF0aGVyIFByb2R1Y3Rpb24ifQ.SBcpgOiTZwjrkUKv1FhiFMVS4d05YqJmFnV9YGuOgrs
+
+{
+  "name": "Javlon",
+  "surname": "Abdu"
+}
+
+
+### Delete Profile - CLIENT
+DELETE http://137.184.80.70:4040/api/v1/profile/delete
+#->CLIENT
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXZsb25wYTFuQGdtYWlsLmNvbSIsImlhdCI6MTY1NDc2NDg5OSwiZXhwIjoxNjU1MzY5Njk5LCJpc3MiOiJXZWF0aGVyIFByb2R1Y3Rpb24ifQ.4kakTgY014MWeIm6CnS56Dncm_He7TquWWdYElZFPvU
+#->ADMIN
+#Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmR1cmFraG1hbm92amJAaWNsb3VkLmNvbSIsImlhdCI6MTY1NDc2NDkzOCwiZXhwIjoxNjU1MzY5NzM4LCJpc3MiOiJXZWF0aGVyIFByb2R1Y3Rpb24ifQ.SBcpgOiTZwjrkUKv1FhiFMVS4d05YqJmFnV9YGuOgrs
+
+
+
+### Update Profile Email - ANY
+PUT http://137.184.80.70:4040/api/v1/profile/email
+Content-Type: application/json
+#->CLIENT
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXZsb25wYTFuQGdtYWlsLmNvbSIsImlhdCI6MTY1NDc2NDg5OSwiZXhwIjoxNjU1MzY5Njk5LCJpc3MiOiJXZWF0aGVyIFByb2R1Y3Rpb24ifQ.4kakTgY014MWeIm6CnS56Dncm_He7TquWWdYElZFPvU
+#->ADMIN
+#Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmR1cmFraG1hbm92amJAaWNsb3VkLmNvbSIsImlhdCI6MTY1NDc2NDkzOCwiZXhwIjoxNjU1MzY5NzM4LCJpc3MiOiJXZWF0aGVyIFByb2R1Y3Rpb24ifQ.SBcpgOiTZwjrkUKv1FhiFMVS4d05YqJmFnV9YGuOgrs
+
+{
+  "email": "abs123@gmail.com"
+}
+
+### Put Profile Email - ANY
+GET http://137.184.80.70:4040/api/v1/profile/eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYnMxMjNAZ21haWwuY29tIiwiaWF0IjoxNjU0NzA4ODU1LCJleHAiOjE2NTQ3MDkwMzUsInByb2ZpbGVJZCI6IjJjOWE2MDgxODEzZDg4NDUwMTgxM2Q4ODRlOGEwMDAwIiwiaXNzIjoiV2VhdGhlciBQcm9kdWN0aW9uIn0.DyN4Nz5seu5CzgKgebhyCtcsntm-6ydqhdnlU8km-V8
+#->CLIENT
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXZsb25wYTFuQGdtYWlsLmNvbSIsImlhdCI6MTY1NDc2NDg5OSwiZXhwIjoxNjU1MzY5Njk5LCJpc3MiOiJXZWF0aGVyIFByb2R1Y3Rpb24ifQ.4kakTgY014MWeIm6CnS56Dncm_He7TquWWdYElZFPvU
+#->ADMIN
+#Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmR1cmFraG1hbm92amJAaWNsb3VkLmNvbSIsImlhdCI6MTY1NDc2NDkzOCwiZXhwIjoxNjU1MzY5NzM4LCJpc3MiOiJXZWF0aGVyIFByb2R1Y3Rpb24ifQ.SBcpgOiTZwjrkUKv1FhiFMVS4d05YqJmFnV9YGuOgrs
+
+
+### Update Profile Password - ANY
+PUT http://137.184.80.70:4040/api/v1/profile/password
+Content-Type: application/json
+#->CLIENT
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXZsb25wYTFuQGdtYWlsLmNvbSIsImlhdCI6MTY1NDc2NDg5OSwiZXhwIjoxNjU1MzY5Njk5LCJpc3MiOiJXZWF0aGVyIFByb2R1Y3Rpb24ifQ.4kakTgY014MWeIm6CnS56Dncm_He7TquWWdYElZFPvU
+#->ADMIN
+#Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmR1cmFraG1hbm92amJAaWNsb3VkLmNvbSIsImlhdCI6MTY1NDc2NDkzOCwiZXhwIjoxNjU1MzY5NzM4LCJpc3MiOiJXZWF0aGVyIFByb2R1Y3Rpb24ifQ.SBcpgOiTZwjrkUKv1FhiFMVS4d05YqJmFnV9YGuOgrs
+
+{
+  "oldPassword": "qwerty123",
+  "password": "Javlondev"
+}
+
+
+
+
+### Update Profile Role - ADMIN
+PUT http://137.184.80.70:4040/api/v1/profile/role/2c9a60818144589701814458a14d0000
+#->CLIENT
+#Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXZsb25wYTFuQGdtYWlsLmNvbSIsImlhdCI6MTY1NDc2NDg5OSwiZXhwIjoxNjU1MzY5Njk5LCJpc3MiOiJXZWF0aGVyIFByb2R1Y3Rpb24ifQ.4kakTgY014MWeIm6CnS56Dncm_He7TquWWdYElZFPvU
+#->ADMIN
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmR1cmFraG1hbm92amJAaWNsb3VkLmNvbSIsImlhdCI6MTY1NDc2NDkzOCwiZXhwIjoxNjU1MzY5NzM4LCJpc3MiOiJXZWF0aGVyIFByb2R1Y3Rpb24ifQ.SBcpgOiTZwjrkUKv1FhiFMVS4d05YqJmFnV9YGuOgrs
+
+
+### Update Profile Status - ADMIN
+PUT http://137.184.80.70:4040/api/v1/profile/status/2c9a60818144589701814458a14d0000
+#->CLIENT
+#Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXZsb25wYTFuQGdtYWlsLmNvbSIsImlhdCI6MTY1NDc2NDg5OSwiZXhwIjoxNjU1MzY5Njk5LCJpc3MiOiJXZWF0aGVyIFByb2R1Y3Rpb24ifQ.4kakTgY014MWeIm6CnS56Dncm_He7TquWWdYElZFPvU
+#->ADMIN
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmR1cmFraG1hbm92amJAaWNsb3VkLmNvbSIsImlhdCI6MTY1NDc2NDkzOCwiZXhwIjoxNjU1MzY5NzM4LCJpc3MiOiJXZWF0aGVyIFByb2R1Y3Rpb24ifQ.SBcpgOiTZwjrkUKv1FhiFMVS4d05YqJmFnV9YGuOgrs
+
+
+### Delete Profile - ADMIN
+DELETE http://137.184.80.70:4040/api/v1/profile/delete/2c9a60818144589701814458a14d0000
+#->CLIENT
+#Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXZsb25wYTFuQGdtYWlsLmNvbSIsImlhdCI6MTY1NDc2NDg5OSwiZXhwIjoxNjU1MzY5Njk5LCJpc3MiOiJXZWF0aGVyIFByb2R1Y3Rpb24ifQ.4kakTgY014MWeIm6CnS56Dncm_He7TquWWdYElZFPvU
+#->ADMIN
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmR1cmFraG1hbm92amJAaWNsb3VkLmNvbSIsImlhdCI6MTY1NDc2NDkzOCwiZXhwIjoxNjU1MzY5NzM4LCJpc3MiOiJXZWF0aGVyIFByb2R1Y3Rpb24ifQ.SBcpgOiTZwjrkUKv1FhiFMVS4d05YqJmFnV9YGuOgrs
+
+
+### Profile List - ADMIN
+GET http://137.184.80.70:4040/api/v1/profile/list
+Content-Type: application/json
+#->CLIENT
+#Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXZsb25wYTFuQGdtYWlsLmNvbSIsImlhdCI6MTY1NDc2NDg5OSwiZXhwIjoxNjU1MzY5Njk5LCJpc3MiOiJXZWF0aGVyIFByb2R1Y3Rpb24ifQ.4kakTgY014MWeIm6CnS56Dncm_He7TquWWdYElZFPvU
+#->ADMIN
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmR1cmFraG1hbm92amJAaWNsb3VkLmNvbSIsImlhdCI6MTY1NDc2NDkzOCwiZXhwIjoxNjU1MzY5NzM4LCJpc3MiOiJXZWF0aGVyIFByb2R1Y3Rpb24ifQ.SBcpgOiTZwjrkUKv1FhiFMVS4d05YqJmFnV9YGuOgrs
+
+{
+  "name": "Javlon",
+  "surname": "A",
+  "email": "j",
+  "role": "ROLE_CLIENT",
+  "status": "ACTIVE",
+  "deletedDate": true,
+  "createdDate": true
+}
+
+
+### Profile Pagination - ADMIN
+GET http://137.184.80.70:4040/api/v1/profile/page?page=0&size=15
+#->CLIENT
+#Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXZsb25wYTFuQGdtYWlsLmNvbSIsImlhdCI6MTY1NDc2NDg5OSwiZXhwIjoxNjU1MzY5Njk5LCJpc3MiOiJXZWF0aGVyIFByb2R1Y3Rpb24ifQ.4kakTgY014MWeIm6CnS56Dncm_He7TquWWdYElZFPvU
+#->ADMIN
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmR1cmFraG1hbm92amJAaWNsb3VkLmNvbSIsImlhdCI6MTY1NDc2NDkzOCwiZXhwIjoxNjU1MzY5NzM4LCJpc3MiOiJXZWF0aGVyIFByb2R1Y3Rpb24ifQ.SBcpgOiTZwjrkUKv1FhiFMVS4d05YqJmFnV9YGuOgrs
+

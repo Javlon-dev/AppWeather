@@ -3,7 +3,7 @@ POST http://localhost:4040/api/v1/auth/login
 Content-Type: application/json
 
 {
-  "email": "abs@gmail.com",
+  "email": "javlonpa1n@gmail.com",
   "password": "qwerty123"
 }
 
@@ -22,10 +22,11 @@ Content-Type: application/json
 
 {
   "name": "Java",
-  "surname": "1.8",
-  "email": "abs@gmail.com",
+  "surname": "Abdu",
+  "email": "javlonpa1n@gmail.com",
   "password": "qwerty123"
 }
 
 ### Verification
-GET http://localhost:4040/api/v1/auth/verification/eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYnNAZ21haWwuY29tIiwiaWF0IjoxNjU0Njk4MjgzLCJleHAiOjE2NTQ2OTg0NjMsInByb2ZpbGVJZCI6IjJjOWE2MDgxODE0M2IzNzEwMTgxNDNiNDExOTYwMDAwIiwiaXNzIjoiV2VhdGhlciBQcm9kdWN0aW9uIn0.GES5T4xUT9N-a2khYzcHsQ7jycG7Llt_STD1-WqF4AU
+GET http://localhost:4040/api/v1/auth/verification/eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXZsb25wYTFuQGdtYWlsLmNvbSIsImlhdCI6MTY1NDc2NTUzOCwiZXhwIjoxNjU0NzY1NzE4LCJwcm9maWxlSWQiOiIyYzlhNjA4MTgxNDdiNTJjMDE4MTQ3YjY0ZTA0MDAwMSIsImlzcyI6IldlYXRoZXIgUHJvZHVjdGlvbiJ9.NuoU_6WNsF6G2ugcYZHb9-T_LLQExpxSJc76FaWK3cc
+
