@@ -1,7 +1,7 @@
 package com.company.service;
 
 import com.company.config.details.EntityDetails;
-import com.company.dto.rest.weather.WeatherDTO;
+import com.company.dto.rest.WeatherDTO;
 import com.company.entity.ProfileEntity;
 import com.company.service.rest.WeatherRestService;
 import lombok.RequiredArgsConstructor;

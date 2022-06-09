@@ -1,6 +1,6 @@
 package com.company.controller;
 
-import com.company.dto.rest.weather.WeatherDTO;
+import com.company.dto.rest.WeatherDTO;
 import com.company.service.WeatherService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

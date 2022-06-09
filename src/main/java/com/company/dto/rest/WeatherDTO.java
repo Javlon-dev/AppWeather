@@ -1,6 +1,7 @@
-package com.company.dto.rest.weather;
+package com.company.dto.rest;
 
 
+import com.company.dto.rest.weather.*;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;

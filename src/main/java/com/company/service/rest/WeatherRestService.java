@@ -1,6 +1,6 @@
 package com.company.service.rest;
 
-import com.company.dto.rest.weather.WeatherDTO;
+import com.company.dto.rest.WeatherDTO;
 import com.company.exception.ItemNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
