@@ -33,7 +33,7 @@ public class AdminService {
         entity.setName("A");
         entity.setSurname("B");
         entity.setEmail(adminEmail);
-        entity.setPassword(passwordEncoder.encode(adminPassword));
+        entity.setPassword(adminPassword);
         entity.setRole(ProfileRole.ROLE_ADMIN);
         entity.setStatus(ProfileStatus.ACTIVE);
 

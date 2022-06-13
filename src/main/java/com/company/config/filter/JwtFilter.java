@@ -44,7 +44,7 @@ public class JwtFilter extends OncePerRequestFilter {
 
             JwtDTO jwtDTO = JwtUtil.decode(token);
 
-            CustomProfileDetails details = customProfileDetailsService.loadUserByUsername(jwtDTO.getEmail());
+            CustomProfileDetails details = (CustomProfileDetails) customProfileDetailsService.loadUserByUsername(jwtDTO.getEmail());
 
             UsernamePasswordAuthenticationToken
                     authentication = new UsernamePasswordAuthenticationToken(details,

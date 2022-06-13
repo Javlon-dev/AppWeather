@@ -39,7 +39,7 @@ public class SwaggerConfig {
         return new ApiInfo("Weather",
                 "Api documentation for Weather Project",
                 "1.0",
-                "t.me/Javlondev",
+                "https://t.me/Javlondev",
                 new springfox.documentation.service.Contact("", "", ""),
                 "",
                 "",
