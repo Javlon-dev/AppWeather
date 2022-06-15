@@ -1,5 +1,6 @@
 ### Create Agent - ADMIN
-POST http://localhost:4040/api/v1/agent/registration
+POST http://137.184.80.70:4040/api/v1/agent/registration
+#POST http://localhost:4040/api/v1/agent/registration
 Content-Type: application/json
 #->CLIENT
 #Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXZsb25wYTFuQGdtYWlsLmNvbSIsImlhdCI6MTY1NDc2NDg5OSwiZXhwIjoxNjU1MzY5Njk5LCJpc3MiOiJXZWF0aGVyIFByb2R1Y3Rpb24ifQ.4kakTgY014MWeIm6CnS56Dncm_He7TquWWdYElZFPvU
@@ -7,7 +8,7 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmR1cmFraG1hbm92amJAaWNsb3VkLmNvbSIsImlhdCI6MTY1NDc2NDkzOCwiZXhwIjoxNjU1MzY5NzM4LCJpc3MiOiJXZWF0aGVyIFByb2R1Y3Rpb24ifQ.SBcpgOiTZwjrkUKv1FhiFMVS4d05YqJmFnV9YGuOgrs
 
 {
-  "nickname": "SarvarGo",
-  "firstname": "Sarvar",
-  "lastname": "Sarvarov"
+  "nickname": "Agent",
+  "firstname": "qwerty",
+  "lastname": "asdfgh"
 }

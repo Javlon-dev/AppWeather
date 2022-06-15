@@ -1,7 +1,9 @@
 package com.company.service;
 
+import com.company.config.details.EntityDetails;
 import com.company.dto.rest.AgentDTO;
 import com.company.dto.rest.agent.AgentRegistrationDTO;
+import com.company.entity.ProfileEntity;
 import com.company.service.rest.AgentRestService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +18,8 @@ public class AgentService {
 
 
     public AgentDTO registration(AgentRegistrationDTO dto) {
-        return agentRestService.registration(dto);
+        ProfileEntity entity = EntityDetails.getProfile();
+        return agentRestService.registration(dto, entity, agentRestService.login(entity));
     }
 
 }

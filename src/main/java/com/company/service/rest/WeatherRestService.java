@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 @Service
@@ -35,7 +36,7 @@ public class WeatherRestService {
 
         try {
             response = restTemplate.getForEntity(url + token + locationPath + location, WeatherDTO.class);
-        } catch (HttpClientErrorException e) {
+        } catch (RestClientException e) {
             log.warn("Location Not Found email={} location={}", email, location);
             throw new ItemNotFoundException("Location Not Found!");
         }
